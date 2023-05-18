@@ -1,0 +1,3 @@
+[submodule "kj_mod/khook"]
+	path = kj_mod/khook
+	url = https://github.com/milabs/khook

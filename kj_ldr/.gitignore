@@ -1,0 +1,11 @@
+*.o
+
+loader
+loader.elf
+
+payload
+payload.c
+payload.elf
+
+test1
+test2

@@ -1,0 +1,26 @@
+PHDRS {
+	text PT_LOAD;
+}
+
+SECTIONS {
+
+	.text : {
+
+		__loader = .;
+
+		KEEP (*(.text.startup))
+
+		/** Keep everything together... */
+
+		*(.text .text.*)
+		*(.rodata .rodata.*)
+		*(.data .data.*)
+		*(.bss .bss.*)
+
+		/** End mark (not required) */
+		LONG (0xeeeeeeee)
+
+		__loader_end = .;
+
+	} :text
+}

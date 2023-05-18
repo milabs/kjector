@@ -1,0 +1,21 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: KJECTOR - Linux kernel injector
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Ilya
+    family-names: Matveychikov
+    email: matvejchikov@gmail.com
+repository-code: 'https://github.com/milabs/kjector'
+abstract: Code injection from Linux kernel to a process.
+keywords:
+  - linux
+  - kernel
+  - code injection
+license: GPL-2.0
+date-released: '2023-05-20'

@@ -1,0 +1,12 @@
+*.a
+*.o
+*.o.*
+*.ko
+*.ko.unsigned
+*.inc
+*.cmd
+*.mod
+*.mod.c
+*.order
+*.symvers
+.tmp_versions

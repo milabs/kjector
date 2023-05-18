@@ -1,0 +1,31 @@
+PAYLOAD		?= ldr
+MODNAME		?= kjector
+
+obj-m		+= $(MODNAME).o
+$(MODNAME)-y	+= module.o
+
+ifeq ($(DEBUG),)
+ccflags-y	+= -DNDEBUG
+endif
+
+ccflags-y	+= -DPAYLOAD='"$(PAYLOAD)"'
+ifeq ($(PAYLOAD),ldr)
+ccflags-y	+= -DPAYLOAD_LDR
+else ifeq ($(PAYLOAD),idle)
+ccflags-y	+= -DPAYLOAD_IDLE
+else ifeq ($(PAYLOAD),idle-trap)
+ccflags-y	+= -DPAYLOAD_IDLE_TRAP
+else
+$(error Invalid PAYLOAD value, please check ...)
+endif
+
+ifeq ($(PAYLOAD),ldr)
+$(MODNAME)-objs	+= ../kj_ldr/loader.o
+ifeq ($(LIBKJECTOR),)
+ccflags-y	+= -DLIBKJECTOR='"$(abspath $(src)/../kj_lib/libkjector.so)"'
+else
+ccflags-y	+= -DLIBKJECTOR='"$(abspath $(LIBKJECTOR))"'
+endif
+endif
+
+ldflags-y	+= -T$(src)/khook/khook/engine.lds # use LDFLAGS for old kernels
